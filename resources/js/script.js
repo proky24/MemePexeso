@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const delay = index * 500;
     
                 setTimeout(() => {
-                    btn.style.display = 'block';
                     btn.classList.add('addFadeIn');
                 }, delay);
     
