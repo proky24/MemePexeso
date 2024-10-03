@@ -4,12 +4,12 @@ let livesArray = [];
 
 for(let i = 1; i <= 2; i++) {
     livesArray.push({
-        img: '../ImgsLives/' + i + '.png'
+        img: '/resources/ImgsLives/' + i + '.png'
     });
 }
 
 const livesContainer = document.getElementById('lives');
-for(let i = 0; i < 7; i++){
+for(let i = 0; i < 1; i++){
     const img = document.createElement('img');
     img.classList.add('live');
     img.setAttribute('src', livesArray[0].img);
@@ -19,7 +19,7 @@ for(let i = 0; i < 7; i++){
 
 for(let i = 1; i <= 15; i++) {
     beforeArray.push({
-        img: '../imgs/' + i + '.jpg'
+        img: '/resources/imgs/' + i + '.jpg'
     });
 }
 
@@ -45,7 +45,7 @@ shuffle(pexesoArray);
     beforeArray.splice(rnd, 1);
 }*/
 
-let count = 7;
+let count = 1;
 let id = 1;
 let guessedId1 = '';
 let guessedId2 = '';
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardFront.addEventListener('click', () => {
                     
                     if(guessedId1 !== ''){
-                        guessedId2 = imgElement.getAttribute('src');
+                        guessedId2 = imgElement.getAttribute('id');
                         console.log('guess 2 is: ' + guessedId2);
                         cardInner.classList.add('isFlipped');
                         
@@ -104,24 +104,27 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }, 500);
                                 guessedId1 = '';
                                 guessedId2 = '';
-                                if(count !== 0){
+                                if(count != 0){
                                     let minusLive = livesContainer.querySelector(`:nth-child(${count})`);
                                     minusLive.removeAttribute('src');
-                                    minusLive.setAttribute('src', '../ImgsLives/2.png');
+                                    minusLive.setAttribute('src', '/resources/ImgsLives/3.png');
                                     livesContainer.classList.add('shake');
                                     setTimeout(() => {
                                         livesContainer.classList.remove('shake');
+                                        livesContainer.classList.add('shakeNervously');
                                     }, 500);
                                 } else {
-                                    alert('You lost');
-                                    window.location.reload();
+                                    setTimeout(() => {
+                                        alert('You lost');
+                                        window.location.reload();
+                                    }, 1000);
                                 }
                                 count--;
                             }
                         }, 1000);
 
                     } else {
-                        guessedId1 = imgElement.getAttribute('src');
+                        guessedId1 = imgElement.getAttribute('id');
                         console.log('guess 1 is: ' + guessedId1);
                         cardInner.classList.add('isFlipped');
                     }
