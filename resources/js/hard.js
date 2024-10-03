@@ -49,6 +49,7 @@ let count = 1;
 let id = 1;
 let guessedId1 = '';
 let guessedId2 = '';
+let foundedCards = [];
 
 document.addEventListener('DOMContentLoaded', () => {    
     const containerPexeso = document.getElementById('containerPexeso');
@@ -85,21 +86,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 cardFront.addEventListener('click', () => {
                     
                     if(guessedId1 !== ''){
-                        guessedId2 = imgElement.getAttribute('id');
+                        guessedId2 = imgElement.getAttribute('src');
                         console.log('guess 2 is: ' + guessedId2);
                         cardInner.classList.add('isFlipped');
                         
                         setTimeout(() => {
                             if(guessedId1 === guessedId2){
                                 alert('You found a pair');
+                                foundedCards.push(guessedId1);
+                                foundedCards.push(guessedId2);
                                 guessedId1 = '';
                                 guessedId2 = '';
                             } else {
                                 alert('You did not find a pair');
                                 setTimeout(() => {
                                     const cards = document.querySelectorAll('.isFlipped');
-                                    cards.forEach(cardInner => {
-                                        cardInner.classList.remove('isFlipped');
+                                    cards.forEach(card => {
+                                        const imgSrc = card.querySelector('img').getAttribute('src');
+                                        if(!foundedCards.includes(imgSrc)){
+                                            card.classList.remove('isFlipped');
+                                        }
                                     });
                                 }, 500);
                                 guessedId1 = '';
@@ -116,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 } else {
                                     setTimeout(() => {
                                         alert('You lost');
-                                        window.location.reload();
+                                        location.reload();
                                     }, 1000);
                                 }
                                 count--;
@@ -124,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }, 1000);
 
                     } else {
-                        guessedId1 = imgElement.getAttribute('id');
+                        guessedId1 = imgElement.getAttribute('src');
                         console.log('guess 1 is: ' + guessedId1);
                         cardInner.classList.add('isFlipped');
                     }

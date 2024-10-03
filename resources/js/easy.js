@@ -49,6 +49,7 @@ let count = 7;
 let id = 1;
 let guessedId1 = '';
 let guessedId2 = '';
+let foundedCards = [];
 
 document.addEventListener('DOMContentLoaded', () => {    
     const containerPexeso = document.getElementById('containerPexeso');
@@ -92,14 +93,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                             if(guessedId1 === guessedId2){
                                 alert('You found a pair');
+                                foundedCards.push(guessedId1);
+                                foundedCards.push(guessedId2);
                                 guessedId1 = '';
                                 guessedId2 = '';
                             } else {
                                 alert('You did not find a pair');
                                 setTimeout(() => {
                                     const cards = document.querySelectorAll('.isFlipped');
-                                    cards.forEach(cardInner => {
-                                        cardInner.classList.remove('isFlipped');
+                                    cards.forEach(card =>  {
+                                        const imgSrc = card.querySelector('img').getAttribute('src');
+                                        if(!foundedCards.includes(imgSrc)) {
+                                            card.classList.remove('isFlipped');
+                                        }
                                     });
                                 }, 500);
                                 guessedId1 = '';
@@ -114,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     }, 500);
                                 } else {
                                     alert('You lost');
-                                    window.location.reload();
+                                    location.reload();
                                 }
                                 count--;
                             }
