@@ -1,0 +1,97 @@
+#nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+}
+
+#welcomeText:after{
+    content: "";
+    animation: typewriter 4s steps(40) 1s 1 normal both;
+}
+
+.addSlideIn{
+    animation: slideIn 1s ease forwards;
+}
+
+.addFadeIn{
+    animation: fadeIn 1s forwards;
+}
+
+button{
+    padding: 24px;
+    border-style: none;
+    border-radius: 8px;
+    text-align: center;
+    width: 24vw;
+    cursor: pointer;
+    transition: scale 0.5s ease;
+    background-color: #9db5b2;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+button:hover{
+    scale: 1.02;
+}
+
+h2{
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+p{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
+}
+
+@keyframes fadeIn{
+    0%{
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes typewriter {
+    0% { content: " "; }
+    1% { content: "W"; }
+    2% { content: "WE"; }
+    4% { content: "WEL"; }
+    6% { content: "WELC"; }
+    8% { content: "WELCO"; }
+    10% { content: "WELCOM"; }
+    12% { content: "WELCOME"; }
+    14% { content: "WELCOME "; }
+    16% { content: "WELCOME T"; }
+    18% { content: "WELCOME TO"; }
+    20% { content: "WELCOME TO "; }
+    22% { content: "WELCOME TO M"; }
+    24% { content: "WELCOME TO ME"; }
+    26% { content: "WELCOME TO MEM"; }
+    28% { content: "WELCOME TO MEME"; }
+    30% { content: "WELCOME TO MEME "; }
+    32% { content: "WELCOME TO MEME P"; }
+    34% { content: "WELCOME TO MEME PE"; }
+    36% { content: "WELCOME TO MEME PEX"; }
+    38% { content: "WELCOME TO MEME PEXE"; }
+    40% { content: "WELCOME TO MEME PEXES"; }
+    42% { content: "WELCOME TO MEME PEXESO"; }
+    100% { content: "WELCOME TO MEME PEXESO !"; }
+}
+
+@keyframes slideIn{
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

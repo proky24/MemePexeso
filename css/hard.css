@@ -1,0 +1,129 @@
+#containerPexeso{
+    padding: 12px;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.card{
+    width: 200px;
+    height: 250px;
+    perspective: 1000px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.cardInner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+}
+
+/*.card:hover .cardInner{
+    transform: rotateY(-180deg);
+}*/
+
+.isFlipped{
+    transform: rotateY(-180deg);
+}
+
+.cardFront, .cardBack{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 5%;
+}
+
+.cardFront{
+    background-color: rgb(47, 132, 119);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardFront h3{
+    margin: 0;
+}
+
+.cardBack{
+    transform: rotateY(180deg);
+    background-color: #fff;
+    color: white;
+}
+
+
+.meme{
+    /*min-width: 200px;
+    max-width: 200px;
+    max-height: 200px;
+    min-height: 200px;*/
+    width: 200px;
+    height: 250px;
+    border-radius: 5%;
+}
+
+.live{
+    width: 30px;
+    height: 30px;
+}
+
+#lives{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.shake{
+    animation: shakeThatAss 0.5s forwards;
+}
+
+.shakeNervously{
+    animation: shakeNervously 0.2s infinite;
+}
+
+@keyframes shakeThatAss{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-20px);
+    }
+    50%{
+        transform: translateX(20px);
+    }
+    75%{
+        transform: translateX(-20px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes shakeNervously{
+    0%{
+        transform: translateX(0);
+    }
+    25%{
+        transform: translateX(-5px);
+    }
+    50%{
+        transform: translateX(5px);
+    }
+    75%{
+        transform: translateX(-5px);
+    }
+    100%{
+        transform: translateX(0);
+    }
+}
