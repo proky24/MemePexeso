@@ -30,9 +30,9 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 button[0].addEventListener('click', function() {
-    window.location.href = '/easy.html';
+    window.location.href = './easy.html';
 });
 
 button[1].addEventListener('click', function() {
-    window.location.href = '/hard.html';
+    window.location.href = './hard.html';
 });
