@@ -97,6 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 foundedCards.push(guessedId2);
                                 guessedId1 = '';
                                 guessedId2 = '';
+                                if(foundedCards.length === 30){
+                                    alert('You won');
+                                    location.reload();
+                                }
                             } else {
                                 alert('You did not find a pair');
                                 setTimeout(() => {
