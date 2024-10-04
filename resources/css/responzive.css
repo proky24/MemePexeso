@@ -20,16 +20,25 @@
         margin-bottom: 12px;
     }
     .card{
-        width: 120px;
-        height: 170px;
+        width: 80px;
+        height: 120px;
     }
 
     .meme{
-        width: 120px;
-        height: 170px;
+        width: 80px;
+        height: 120px;
     }
 
     .cardFront h3{
-        font-size: 1rem;
+        font-size: 0.8rem;
+    }
+
+    #lives img{
+        width: 25px;   
+        height: 25px;
+    }
+
+    .header h1{
+        font-size: 1.5rem;
     }
 }
