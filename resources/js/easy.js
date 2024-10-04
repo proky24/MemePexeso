@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         setTimeout(() => {
                             if(guessedId1 === guessedId2){
-                                alert('You found a pair');
                                 foundedCards.push(guessedId1);
                                 foundedCards.push(guessedId2);
                                 guessedId1 = '';
@@ -102,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     location.reload();
                                 }
                             } else {
-                                alert('You did not find a pair');
                                 setTimeout(() => {
                                     const cards = document.querySelectorAll('.isFlipped');
                                     cards.forEach(card =>  {
