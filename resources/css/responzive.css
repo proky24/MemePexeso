@@ -13,6 +13,10 @@
         font-size: 0.8rem;
     }
 
+    #containerPexeso{
+        gap: 12px;
+    }
+
     button{
         padding: 12px;
         width: 36vw;
