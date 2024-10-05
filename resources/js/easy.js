@@ -1,6 +1,7 @@
 let pexesoArray = [];
 let beforeArray = [];
 let livesArray = [];
+let usedIndices = new Set();
 
 for(let i = 1; i <= 2; i++) {
     livesArray.push({
@@ -17,10 +18,21 @@ for(let i = 0; i < 7; i++){
     livesContainer.appendChild(img);
 }
 
-for(let i = 1; i <= 15; i++) {
+/*for(let i = 1; i <= 8; i++) {
     beforeArray.push({
         img: '/resources/imgs/' + i + '.jpg'
     });
+}*/
+
+while(beforeArray.length < 8) {
+    let rnd = Math.floor(Math.random() * 15) + 1;
+
+    if(!usedIndices.has(rnd)){
+        beforeArray.push({
+            img: '/resources/imgs/' + rnd + '.jpg'
+        });
+    }
+    usedIndices.add(rnd);
 }
 
 
@@ -96,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 foundedCards.push(guessedId2);
                                 guessedId1 = '';
                                 guessedId2 = '';
-                                if(foundedCards.length === 30){
+                                if(foundedCards.length === 16){
                                     alert('You won');
                                     location.reload();
                                 }
@@ -109,11 +121,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                             card.classList.remove('isFlipped');
                                         }
                                     });
-                                }, 500);
+                                }, 200);
                                 guessedId1 = '';
                                 guessedId2 = '';
                                 if(count !== 0){
                                     let minusLive = livesContainer.querySelector(`:nth-child(${count})`);
+                                    if(minusLive === livesContainer.querySelector(`:nth-child(1)`)){
+                                            minusLive.setAttribute('src', '/resources/ImgsLives/3.png');
+                                            livesContainer.classList.add('shakeNervously');
+                                    }
                                     minusLive.removeAttribute('src');
                                     minusLive.setAttribute('src', '/resources/ImgsLives/2.png');
                                     livesContainer.classList.add('shake');

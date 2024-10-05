@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
         button[0].innerText = 'Easy';
-        button[1].innerText = 'HARDCORE';
+        button[1].innerText = 'HARD';
+        button[1].style.color = 'red';
+        button[1].style.marginTop = '10px';
     
         setTimeout(() => {
             button.forEach((btn, index) => {

@@ -1,6 +1,7 @@
 let pexesoArray = [];
 let beforeArray = [];
 let livesArray = [];
+let usedIndices = new Set();
 
 for(let i = 1; i <= 2; i++) {
     livesArray.push({
@@ -9,7 +10,7 @@ for(let i = 1; i <= 2; i++) {
 }
 
 const livesContainer = document.getElementById('lives');
-for(let i = 0; i < 1; i++){
+for(let i = 0; i < 5; i++){
     const img = document.createElement('img');
     img.classList.add('live');
     img.setAttribute('src', livesArray[0].img);
@@ -17,10 +18,21 @@ for(let i = 0; i < 1; i++){
     livesContainer.appendChild(img);
 }
 
-for(let i = 1; i <= 15; i++) {
+/*for(let i = 1; i <= 12; i++) {
     beforeArray.push({
-        img: '/resources/imgs/' + i + '.jpg'
+        img: '/resources/imgs/' + rnd + '.jpg'
     });
+}*/
+
+while(beforeArray.length < 10) {
+    let rnd = Math.floor(Math.random() * 15) + 1;
+
+    if(!usedIndices.has(rnd)){
+        beforeArray.push({
+            img: '/resources/imgs/' + rnd + '.jpg'
+        });
+    }
+    usedIndices.add(rnd);
 }
 
 
@@ -45,7 +57,7 @@ shuffle(pexesoArray);
     beforeArray.splice(rnd, 1);
 }*/
 
-let count = 1;
+let count = 5;
 let id = 1;
 let guessedId1 = '';
 let guessedId2 = '';
@@ -96,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 foundedCards.push(guessedId2);
                                 guessedId1 = '';
                                 guessedId2 = '';
-                                if(foundedCards.length === 30){
+                                if(foundedCards.length === 20){
                                     alert('You won');
                                     location.reload();
                                 }
@@ -115,11 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 if(count != 0){
                                     let minusLive = livesContainer.querySelector(`:nth-child(${count})`);
                                     minusLive.removeAttribute('src');
-                                    minusLive.setAttribute('src', '/resources/ImgsLives/3.png');
+                                    minusLive.setAttribute('src', '/resources/ImgsLives/2.png');
                                     livesContainer.classList.add('shake');
                                     setTimeout(() => {
                                         livesContainer.classList.remove('shake');
-                                        livesContainer.classList.add('shakeNervously');
                                     }, 500);
                                 } else {
                                     setTimeout(() => {

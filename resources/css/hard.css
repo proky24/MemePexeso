@@ -1,17 +1,17 @@
 #containerPexeso{
-    padding: 12px;
+    padding: 14px;
     display: flex;
     position: relative;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 16px;
     margin-top: 5vh;
 }
 
 .card{
-    width: 120px;
-    height: 170px;
+    width: 130px;
+    height: 180px;
     perspective: 1000px;
     background-color: transparent;
     cursor: pointer;
@@ -68,8 +68,8 @@
     max-width: 200px;
     max-height: 200px;
     min-height: 200px;*/
-    width: 120px;
-    height: 170px;
+    width: 130px;
+    height: 180px;
     border-radius: 5%;
 }
 
