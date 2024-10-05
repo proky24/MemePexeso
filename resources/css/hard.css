@@ -5,13 +5,13 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 24px;
     margin-top: 5vh;
 }
 
 .card{
-    width: 130px;
-    height: 180px;
+    width: 140px;
+    height: 190px;
     perspective: 1000px;
     background-color: transparent;
     cursor: pointer;
@@ -68,8 +68,8 @@
     max-width: 200px;
     max-height: 200px;
     min-height: 200px;*/
-    width: 130px;
-    height: 180px;
+    width: 140px;
+    height: 190px;
     border-radius: 5%;
 }
 
