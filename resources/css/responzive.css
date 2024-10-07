@@ -46,4 +46,14 @@
     .header h1{
         font-size: 1.5rem;
     }
+
+    #tutorial{
+        max-width: 250px;
+        line-height: 24px;
+        font-size: 1rem;
+    }   
+
+    #howToPlay{
+        font-size: 1.2rem;
+    }
 }

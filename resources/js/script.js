@@ -1,19 +1,22 @@
-const p = document.querySelector('p');
+const p = document.querySelectorAll('p');
 const button = document.querySelectorAll('button');
+const howToPlay = document.getElementById('howToPlay');
+const animation = document.getElementById('animation');
 
 
 document.addEventListener('DOMContentLoaded', function() {
     
     setTimeout(function() {
-        p.classList.add('addSlideIn');
-        p.innerText = 'Choose difficulty';
-        p.style.textDecoration = 'underline';
+        p[0].classList.add('addSlideIn');
+        p[0].innerText = 'Choose difficulty';
+        p[0].style.textDecoration = 'underline';
     
     
         button[0].innerText = 'Easy';
         button[1].innerText = 'HARD';
         button[1].style.color = 'red';
         button[1].style.marginTop = '10px';
+        button[1].style.marginBottom = '10px';
     
         setTimeout(() => {
             button.forEach((btn, index) => {
@@ -22,8 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     btn.classList.add('addFadeIn');
                 }, delay);
-    
             });
+
+                setTimeout(() => {
+                    howToPlay.innerText = 'How to play?';
+                    howToPlay.classList.add('addFadeIn');    
+                    p[1].classList.add('addFadeIn');
+                    p[1].innerText = 'Choose TWO cards and wait for the program to compare them if you found a pair if not the cards will flip back and you get to choose again.';
+                }, 1200);
         }, 1000);
         
     }, 4100);
