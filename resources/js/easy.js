@@ -62,6 +62,7 @@ let id = 1;
 let guessedId1 = '';
 let guessedId2 = '';
 let foundedCards = [];
+let flippedCards = [];
 
 document.addEventListener('DOMContentLoaded', () => {    
     const containerPexeso = document.getElementById('containerPexeso');
@@ -96,58 +97,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 containerPexeso.appendChild(card);
                 
                 cardFront.addEventListener('click', () => {
-                    
-                    if(guessedId1 !== ''){
-                        guessedId2 = imgElement.getAttribute('src');
-                        console.log('guess 2 is: ' + guessedId2);
-                        cardInner.classList.add('isFlipped');
-                        
-                        setTimeout(() => {
-                            if(guessedId1 === guessedId2){
-                                foundedCards.push(guessedId1);
-                                foundedCards.push(guessedId2);
-                                guessedId1 = '';
-                                guessedId2 = '';
-                                if(foundedCards.length === 16){
-                                    alert('You won');
-                                    location.reload();
-                                }
-                            } else {
-                                setTimeout(() => {
-                                    const cards = document.querySelectorAll('.isFlipped');
-                                    cards.forEach(card =>  {
-                                        const imgSrc = card.querySelector('img').getAttribute('src');
-                                        if(!foundedCards.includes(imgSrc)) {
-                                            card.classList.remove('isFlipped');
-                                        }
-                                    });
-                                }, 200);
-                                guessedId1 = '';
-                                guessedId2 = '';
-                                if(count !== 0){
-                                    let minusLive = livesContainer.querySelector(`:nth-child(${count})`);
-                                    if(minusLive === livesContainer.querySelector(`:nth-child(1)`)){
-                                            minusLive.setAttribute('src', '/resources/ImgsLives/3.png');
-                                            livesContainer.classList.add('shakeNervously');
+                    if(flippedCards.length < 2){
+                        if(guessedId1 !== ''){
+                            guessedId2 = imgElement.getAttribute('src');
+                            console.log('guess 2 is: ' + guessedId2);
+                            flippedCards.push(guessedId2);
+                            cardInner.classList.add('isFlipped');
+                            
+                            setTimeout(() => {
+                                if(guessedId1 === guessedId2){
+                                    foundedCards.push(guessedId1);
+                                    foundedCards.push(guessedId2);
+                                    guessedId1 = '';
+                                    guessedId2 = '';
+                                    flippedCards = [];
+                                    if(foundedCards.length === 16){
+                                        alert('You won');
+                                        location.reload();
                                     }
-                                    minusLive.removeAttribute('src');
-                                    minusLive.setAttribute('src', '/resources/ImgsLives/2.png');
-                                    livesContainer.classList.add('shake');
-                                    setTimeout(() => {
-                                        livesContainer.classList.remove('shake');
-                                    }, 500);
                                 } else {
-                                    alert('You lost');
-                                    location.reload();
+                                    setTimeout(() => {
+                                        const cards = document.querySelectorAll('.isFlipped');
+                                        cards.forEach(card =>  {
+                                            const imgSrc = card.querySelector('img').getAttribute('src');
+                                            if(!foundedCards.includes(imgSrc)) {
+                                                card.classList.remove('isFlipped');
+                                            }
+                                        });
+                                    }, 200);
+                                    guessedId1 = '';
+                                    guessedId2 = '';
+                                    flippedCards = [];
+                                    if(count !== 0){
+                                        let minusLive = livesContainer.querySelector(`:nth-child(${count})`);
+                                        if(minusLive === livesContainer.querySelector(`:nth-child(1)`)){
+                                                minusLive.setAttribute('src', '/resources/ImgsLives/3.png');
+                                                livesContainer.classList.add('shakeNervously');
+                                        }
+                                        minusLive.removeAttribute('src');
+                                        minusLive.setAttribute('src', '/resources/ImgsLives/2.png');
+                                        livesContainer.classList.add('shake');
+                                        setTimeout(() => {
+                                            livesContainer.classList.remove('shake');
+                                        }, 500);
+                                    } else {
+                                        alert('You lost');
+                                        location.reload();
+                                    }
+                                    count--;
                                 }
-                                count--;
-                            }
-                        }, 1000);
-
-                    } else {
-                        guessedId1 = imgElement.getAttribute('src');
-                        console.log('guess 1 is: ' + guessedId1);
-                        cardInner.classList.add('isFlipped');
+                            }, 1000);
+    
+                        } else {
+                            guessedId1 = imgElement.getAttribute('src');
+                            console.log('guess 1 is: ' + guessedId1);
+                            flippedCards.push(guessedId1);
+                            cardInner.classList.add('isFlipped');
+                        }
                     }
 
                 });
