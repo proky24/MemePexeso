@@ -64,6 +64,49 @@ let guessedId2 = '';
 let foundedCards = [];
 let flippedCards = [];
 
+const audioArray = [
+    "",
+    "/resources/sounds/1.mp3",
+    "/resources/sounds/2.mp3",
+    "/resources/sounds/3.mp3",
+    "/resources/sounds/4.mp3",
+    "/resources/sounds/5.mp3",
+    "/resources/sounds/6.mp3",
+    "/resources/sounds/7.mp3",
+    "/resources/sounds/8.mp3",
+    "/resources/sounds/9.mp3",
+    "/resources/sounds/10.mp3",
+    "/resources/sounds/11.mp3",
+    "/resources/sounds/12.mp3",
+    "/resources/sounds/13.mp3",
+    "/resources/sounds/14.mp3",
+    "/resources/sounds/15.mp3"
+];
+
+const imageToAudioMap = {
+    "/resources/imgs/1.jpg": 1,
+    "/resources/imgs/2.jpg": 2,
+    "/resources/imgs/3.jpg": 3,
+    "/resources/imgs/4.jpg": 4,
+    "/resources/imgs/5.jpg": 5,
+    "/resources/imgs/6.jpg": 6,
+    "/resources/imgs/7.jpg": 7,
+    "/resources/imgs/8.jpg": 8,
+    "/resources/imgs/9.jpg": 9,
+    "/resources/imgs/10.jpg": 10,
+    "/resources/imgs/11.jpg": 11,
+    "/resources/imgs/12.jpg": 12,
+    "/resources/imgs/13.jpg": 13,
+    "/resources/imgs/14.jpg": 14,
+    "/resources/imgs/15.jpg": 15
+};
+
+playAudio = (id) => {
+    const audio = document.getElementById('audio');
+    audio.setAttribute('src', audioArray[id]);
+    audio.play();
+}
+
 document.addEventListener('DOMContentLoaded', () => {    
     const containerPexeso = document.getElementById('containerPexeso');
             
@@ -100,6 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(flippedCards.length < 2) {
                         if(guessedId1 !== ''){
                             guessedId2 = imgElement.getAttribute('src');
+
+                            const audioId2 = imageToAudioMap[guessedId2];
+                            playAudio(audioId2);
+
                             console.log('guess 2 is: ' + guessedId2);
                             flippedCards.push(guessedId2);
                             cardInner.classList.add('isFlipped');
@@ -148,6 +195,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
                         } else {
                             guessedId1 = imgElement.getAttribute('src');
+
+                            const audioId1 = imageToAudioMap[guessedId1];
+                            playAudio(audioId1);
+
                             console.log('guess 1 is: ' + guessedId1);
                             flippedCards.push(guessedId1);
                             cardInner.classList.add('isFlipped');
