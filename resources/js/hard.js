@@ -143,6 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(flippedCards.length < 2) {
                         if(guessedId1 !== ''){
                             guessedId2 = imgElement.getAttribute('src');
+                            pairAnimation2 = imgElement.parentElement.parentElement.parentElement;
 
                             const audioId2 = imageToAudioMap[guessedId2];
                             playAudio(audioId2);
@@ -153,6 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             setTimeout(() => {
                                 if(guessedId1 === guessedId2){
+                                    pairAnimation1.classList.add('bounceIn');
+                                    pairAnimation2.classList.add('bounceIn');
                                     foundedCards.push(guessedId1);
                                     foundedCards.push(guessedId2);
                                     guessedId1 = '';
@@ -195,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
                         } else {
                             guessedId1 = imgElement.getAttribute('src');
+                            pairAnimation1 = imgElement.parentElement.parentElement.parentElement;
 
                             const audioId1 = imageToAudioMap[guessedId1];
                             playAudio(audioId1);
