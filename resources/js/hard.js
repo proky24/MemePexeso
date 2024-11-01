@@ -180,6 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                     flippedCards = [];
                                     if(count != 0){
                                         let minusLive = livesContainer.querySelector(`:nth-child(${count})`);
+                                        if(minusLive === livesContainer.querySelector(':nth-child(1)')){
+                                            livesContainer.classList.add('shakeNervously');
+                                        }
                                         minusLive.removeAttribute('src');
                                         minusLive.setAttribute('src', '/resources/ImgsLives/2.png');
                                         livesContainer.classList.add('shake');
